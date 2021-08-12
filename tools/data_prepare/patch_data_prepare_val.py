@@ -20,6 +20,8 @@ parser.add_argument('--gen_val_rgb_detection', action='store_true', help='Genera
 parser.add_argument('--gen_val_detection', action='store_true', help='Generate frustum val split frustum data [from 2d detections]')
 parser.add_argument('--gen_test', action='store_true', help='Generate frustum val split frustum data [from 2d detections]')
 parser.add_argument('--car_only', action='store_true', help='Only generate frustum data from car instances')
+parser.add_argument('--ped_only', action='store_true', help='Only generate frustum data from pedestrian instances')
+parser.add_argument('--cyc_only', action='store_true', help='Only generate frustum data from cyclist instances')
 parser.add_argument('--data', default='mono', help='mono or stereo')
 parser.add_argument('--vis_test', action='store_true')
 args = parser.parse_args()
@@ -423,6 +425,8 @@ def extract_patch_data_val_detection(split, output_filename,
 
             # get 2d box from ground truth
             box2d = object.box2d
+            xmin, ymin, xmax, ymax = box2d
+            if ymax - ymin < img_height_threshold:
                 progress_bar.update()
                 continue
 
@@ -480,12 +484,22 @@ def extract_patch_data_val_detection(split, output_filename,
 
 if __name__ == '__main__':
     # setting
-    whitelist = ['Car'] if args.car_only else ['Car', 'Pedestrian', 'Cyclist']
-    output_prefix = 'patch_caronly_' if args.car_only else 'patch_carpedcyc_'
+    output_prefix = 'patch_carpedcyc_'
+    whitelist = ['Car', 'Pedestrian', 'Cyclist']
+
+    if args.ped_only:  
+        whitelist = ['Pedestrian']
+        output_prefix = 'patch_pedonly_'
+    if args.cyc_only:   
+        whitelist = ['Cyclist']
+        output_prefix = 'patch_cyconly_'
+    if args.car_only:
+        whitelist = ['Car']
+        output_prefix = 'patch_caronly_'
 
     train_filename = output_prefix + 'train.pickle'
     val_filename = output_prefix + 'val.pickle'
-    val_detections_filename = output_prefix + 'val_pred_feat_km3d.pickle'
+    val_detections_filename = output_prefix + 'val_pred.pickle'
     rgb_detections = os.path.join(ROOT_DIR, 'data/KITTI/2d_detections/fpointnet/rgb_detection_val.txt')
     test_filename = output_prefix + 'test.pickle'
 
