@@ -72,7 +72,7 @@ mv *.pickle ../../data/KITTI/pickle_files
 
 #### Prepare Waymo dataset
 
-We also provide [Waymo Usage](https://github.com/Willy0919/pct/tree/main/tools/waymo) for monocular 3D detection.
+We also provide [Waymo Usage](https://github.com/amazon-research/progressive-coordinate-transforms/tree/main/tools/waymo) for monocular 3D detection.
 
 
 ## Training
