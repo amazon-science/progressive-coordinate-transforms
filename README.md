@@ -1,6 +1,6 @@
 ## Progressive Coordinate Transforms for Monocular 3D Object Detection
 
-This repository is the official implementation of [PCT](arxiv).
+This repository is the official implementation of [PCT](https://arxiv.org/abs/2108.05793).
 
 #### Introduction
 
@@ -118,12 +118,18 @@ This code benefits from the excellent work [PatchNet](https://github.com/xinzhum
 ## Citation
 
 ```
+@article{wang2021pct,
+  title={Progressive Coordinate Transforms for Monocular 3D Object Detection},
+  author={Li Wang, Li Zhang, Yi Zhu, Zhi Zhang, Tong He, Mu Li, Xiangyang Xue},
+  journal={arXiv preprint arXiv:2108.05793},
+  year={2021}
+}
 ```
 
 
 ## Contact
 
-For questions regarding DDMP-3D, feel free to post here or directly contact the authors (wangli16@fudan.edu.cn).
+For questions regarding PCT-3D, feel free to post here or directly contact the authors (wangli16@fudan.edu.cn).
 
 
 ## Security
