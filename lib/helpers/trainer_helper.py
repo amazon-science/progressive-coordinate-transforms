@@ -8,7 +8,7 @@ import numpy as np
 from lib.helpers.save_helper import get_checkpoint_state
 from lib.helpers.save_helper import save_checkpoint
 from lib.helpers.decorator_helper import decorator
-from lib.helpers.decorator_helper_level import decorator_level
+#from lib.helpers.decorator_helper_level import decorator_level
 
 
 
@@ -23,7 +23,7 @@ class Trainer(object):
         self.lr_scheduler = lr_scheduler
         self.bnm_scheduler = bnm_scheduler
         self.decorator = decorator
-        self.val_decorator = decorator_level
+#        self.val_decorator = decorator_level
         self.logger = logger
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.model.to(self.device)
