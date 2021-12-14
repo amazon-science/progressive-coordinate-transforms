@@ -54,8 +54,8 @@ def main():
 
     # load cfg
     assert (os.path.exists(args.config))
-    cfg = yaml.load(open(args.config, 'r'), Loader=yaml.Loader)
-
+    #cfg = yaml.load(open(args.config, 'r'), Loader=yaml.Loader)
+    cfg = yaml.safe_load(open(args.config, 'r'))#, Loader=yaml.Loader)
     set_random_seed(cfg['random_seed'])
 
     # build dataset helper, temporally only support kitti dataset
