@@ -54,7 +54,7 @@ def main():
 
     # load cfg
     assert (os.path.exists(args.config))
-    cfg = yaml.load(open(args.config, 'r'), Loader=yaml.Loader)
+    cfg = yaml.safe_load(open(args.config, 'r'))
 
     set_random_seed(cfg['random_seed'])
 
