@@ -162,7 +162,7 @@ if __name__ == '__main__':
     dataset_config = Kitti_Config()
     config = '../../cfgs/config_patchnet.yaml'
     assert (os.path.exists(config))
-    cfg = yaml.load(open(config, 'r'), Loader=yaml.Loader)
+    cfg = yaml.safe_load(open(config, 'r'))#, Loader=yaml.Loader)
     cfg = cfg['dataset']['train']
     cfg['pickle_file'] = '/Users/maxinzhu/Documents/GitHub/3DDetection/data/KITTI/pickle_files/patch_carpedcyc_train.pickle'
     dataset = PatchDataset(dataset_helper=dataset_config,
